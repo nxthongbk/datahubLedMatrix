@@ -1,0 +1,24 @@
+executables:
+{
+    ledmatrixDisplayd = ( ledmatrixDisplayComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( ledmatrixDisplayd )
+    }
+}
+
+bindings:
+{
+    ledmatrixDisplayd.ledmatrixDisplayComponent.io -> dataHub.io
+    ledmatrixDisplayd.ledmatrixDisplayComponent.admin -> dataHub.admin
+    ledmatrixDisplayd.ledmatrixDisplayComponent.ma_ledmatrix -> ledmatrix.ma_ledmatrix
+}
+
+extern:
+{
+    ledmatrixDisplayd.ledmatrixDisplayComponent.ma_ledmatrix
+}
