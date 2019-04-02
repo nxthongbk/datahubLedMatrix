@@ -43,7 +43,11 @@ static void LedmatrixObservationUpdateHandler
 )
 {
     LE_INFO("Observed filtered led matrix = %lf (timestamped %lf)", value, timestamp);
-    ma_ledmatrix_displayNumber(1, 1000, true, 0x00);
+
+    char led_value[50];
+    snprintf(led_value, 50, "%f", value);
+
+    ma_ledmatrix_displayString(led_value, 1000, true, 0x00);
 
 }
 
@@ -51,7 +55,6 @@ static void LedmatrixObservationUpdateHandler
 COMPONENT_INIT
 {
     
-    LE_INFO("Sample app using API of LED matrix");
     le_result_t result;
     ma_ledmatrix_init("/dev/i2c-0", 0, 0);
    
@@ -74,7 +77,7 @@ COMPONENT_INIT
     LE_ASSERT(result == LE_OK);
    
 
-    // Create observation (filter) for latitude. To set up the "dead band" filter,
+    // Create observation (filter) for ledmatrix. To set up the "dead band" filter,
     // lower limit assigned to high limit and vice versa (see admin.io doc for details).
     admin_CreateObs(LEDMATRIX_OBS);
     admin_SetLowLimit(LEDMATRIX_OBS, LEDMATRIX_UPPER_LIMIT);

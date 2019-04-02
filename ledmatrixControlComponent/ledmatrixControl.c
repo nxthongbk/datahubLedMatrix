@@ -9,8 +9,8 @@ static le_timer_Ref_t Timer;
 
 #define LEDMATRIX_NAME "ledmatrix/led1/value"
 
-#define PERIOD_NAME "location/period"
-#define ENABLE_NAME "location/enable"
+#define PERIOD_NAME "ledmatrix/period"
+#define ENABLE_NAME "ledmatrix/enable"
 
 //--------------------------------------------------------------------------------------------------
 /**
@@ -28,10 +28,8 @@ static void TimerExpired
  
     counter += 1;
 
-    // introduce oscillations (20 meters) to latitude
     number += counter % 200;
 
-    // Location units have to be converted from 1e-6 degrees to degrees
     io_PushNumeric(LEDMATRIX_NAME, IO_NOW, number);
    
 }
