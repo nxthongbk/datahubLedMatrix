@@ -43,14 +43,23 @@ static void LedmatrixObservationUpdateHandler
 )
 {
     LE_INFO("Observed filtered led matrix = %lf (timestamped %lf)", value, timestamp);
+    ma_ledmatrix_displayNumber(1, 1000, true, 0x00);
 
 }
 
 
 COMPONENT_INIT
 {
+    
+    LE_INFO("Sample app using API of LED matrix");
     le_result_t result;
-    ma_ledmatrix_displayEmoji(1, 5000, true);
+    ma_ledmatrix_init("/dev/i2c-0", 0, 0);
+   
+    uint16_t pid = ma_ledmatrix_getDevicePID();
+    uint16_t vid = ma_ledmatrix_getDeviceVID();
+    LE_INFO("PID: %x; VID: %x\n", pid, vid);
+
+
     // This will be received from the Data Hub.
     result = io_CreateOutput(LEDMATRIX_NAME, IO_DATA_TYPE_NUMERIC, "degrees");
     LE_ASSERT(result == LE_OK);
