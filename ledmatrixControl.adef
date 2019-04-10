@@ -1,18 +1,18 @@
 executables:
 {
-    gpsControld = ( ledmatrixControlComponent )
+	ledmatrixControld = ( ledmatrixControlComponent )
 }
 
 processes:
 {
-    run:
-    {
-        ( gpsControld )
-    }
+	run:
+	{
+		( ledmatrixControld )
+	}
 }
 
 bindings:
 {
-    gpsControld.ledmatrixControlComponent.io -> dataHub.io
+	ledmatrixControld.ledmatrixControlComponent.io -> dataHub.io
 }
 

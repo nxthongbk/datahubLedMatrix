@@ -1,13 +1,12 @@
 requires:
 {
-    api:
-    {
-        $LEGATO_ROOT/apps/sample/dataHub/io.api
-        //$MANGOH/apps/LedmatrixService/ma_ledmatrix.api
-    }
+	api:
+	{
+		$LEGATO_ROOT/apps/sample/dataHub/io.api
+	}
 }
 
 sources:
 {
-    ledmatrixControl.c
+	ledmatrixControl.c
 }
