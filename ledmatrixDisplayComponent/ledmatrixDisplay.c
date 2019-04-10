@@ -44,7 +44,6 @@ static void LedmatrixObservationUpdateHandler
 	snprintf(led_value, 50, "%f", value);
 
 	ma_ledmatrix_displayString(led_value, 10000, true, MA_LEDMATRIX_green);
-
 }
 
 
